@@ -1,0 +1,48 @@
+function deactiveProducts(id)
+{
+    //если нет создателя то снимаем активность
+
+    if (Array.isArray(id))
+    {
+        $.each(id, function (index, val)
+        {
+            var tr = $('tr[data-id="' + val + '"]');
+
+            if ($(tr).attr("data-created") != "y")
+            {
+                var inputActive = $(tr).find(".ACTIVE input.ACTIVE");
+
+                if (inputActive.prop("checked"))
+                {
+                    inputActive.click();
+                    setTimeout(function ()
+                    {
+                        inputActive.click();
+                    }, 2000);
+
+
+                    $(tr).attr("data-created", "y");
+                }
+            }
+        });
+    } else
+    {
+        var tr = $('tr[data-id="' + id + '"]');
+
+        if ($(tr).attr("data-created") != "y")
+        {
+            var inputActive = $(tr).find(".ACTIVE input.ACTIVE");
+
+            if (inputActive.prop("checked"))
+            {
+                inputActive.click();
+                setTimeout(function ()
+                {
+                    inputActive.click();
+                }, 2000);
+
+                $(tr).attr("data-created", "y");
+            }
+        }
+    }
+}
